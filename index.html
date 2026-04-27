@@ -397,7 +397,7 @@ input[type=number]::-webkit-inner-spin-button { -webkit-appearance:none; margin:
 .breakdown-table tr:last-child td { border-bottom:none; }
 .nivel-badge {
   display:inline-block; font-size:10px; font-weight:700;
-  color:var(--gold2); background:var(--gold-dim);
+  color:var(--text); background:var(--surface3);
   border:1px solid var(--border2); border-radius:4px; padding:2px 8px;
   letter-spacing:0.06em; text-transform:uppercase;
 }
@@ -439,7 +439,7 @@ input[type=number]::-webkit-inner-spin-button { -webkit-appearance:none; margin:
   font-size:10px; font-weight:700; text-transform:uppercase;
   letter-spacing:0.08em; color:var(--text3); margin-bottom:8px;
 }
-.prog-item.highlight .prog-nivel { color:var(--gold2); }
+.prog-item.highlight .prog-nivel { color:var(--text); }
 .prog-monto {
   font-family:'Outfit', sans-serif;
   font-size:14px; font-weight:500; color:var(--text); margin-bottom:4px;
@@ -535,6 +535,59 @@ input[type=number]::-webkit-inner-spin-button { -webkit-appearance:none; margin:
 }
 .inegi-pct-gold { color:var(--gold2); }
 
+
+/* ── MICROCOPY TENSION ── */
+.microcopy-tension {
+  text-align:center;
+  font-size:13px;
+  color:var(--text2);
+  margin-top:24px;
+  margin-bottom:-16px;
+  font-style:italic;
+  letter-spacing:0.01em;
+}
+
+/* ── TENSION BLOCK ── */
+.tension-block {
+  background:linear-gradient(135deg, rgba(217,79,79,0.08), rgba(217,79,79,0.02));
+  border:1px solid rgba(217,79,79,0.2);
+  border-left:3px solid var(--red);
+  border-radius:0 var(--radius-sm) var(--radius-sm) 0;
+  padding:18px 22px;
+  margin-bottom:14px;
+}
+.tension-q {
+  font-family:'Cormorant Garamond', serif;
+  font-size:17px; font-weight:700;
+  color:#ff9090;
+  margin-bottom:8px;
+  line-height:1.3;
+}
+.tension-a {
+  font-size:14px; color:var(--text2); line-height:1.7;
+}
+
+/* ── CURIOSITY BLOCK ── */
+.curiosity-block {
+  background:linear-gradient(135deg, rgba(200,168,75,0.09), rgba(200,168,75,0.02));
+  border:1px solid var(--border2);
+  border-radius:var(--radius-sm);
+  padding:18px 22px;
+  margin-bottom:20px;
+  display:flex; gap:14px; align-items:flex-start;
+}
+.curiosity-icon {
+  font-size:22px; flex-shrink:0; margin-top:2px;
+}
+.curiosity-title {
+  font-family:'Cormorant Garamond', serif;
+  font-size:16px; font-weight:700;
+  color:var(--gold2); margin-bottom:6px;
+}
+.curiosity-desc {
+  font-size:13px; color:var(--text2); line-height:1.7;
+}
+
 </style>
 </head>
 <body>
@@ -547,14 +600,28 @@ input[type=number]::-webkit-inner-spin-button { -webkit-appearance:none; margin:
   <div class="hero-ornament-line right"></div>
 </div>
 <div class="hero-brand">ARCA100</div>
-  <div class="hero-sub">Calculadora Financiera para la Educaci&#243;n de los Hijos</div>
-  <div class="hero-desc">Descubre el monto exacto que saldr&#225; de tu bolsillo bajo el sistema tradicional.</div>
-  <div class="inegi-box">
+  <div class="hero-sub">La mayor&#237;a de los padres subestima el costo real de educar a sus hijos</div>
+  <div class="hero-desc">Ingresa los datos que te pide y descubre la cifra que el sistema tradicional nunca te muestra por adelantado.</div>
+  
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+    Coloca los datos reales para el cálculo
+  </div>
+  <div id="children-container"></div>
+  <button class="add-child-btn" onclick="addChild()">+ Agregar otro hijo</button>
+  <button class="calc-btn" onclick="calcular()">Ver cu&#225;nto voy a pagar realmente &#8594;</button>
+</div>
+
+<div class="inegi-box">
     <div class="inegi-header">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-      Metodolog&#237;a basada en datos del INEGI
+      ¿Por qu&#233; el costo se dispara con los a&#241;os?
     </div>
-    <p class="inegi-intro">Incrementos estructurales al cambiar de nivel escolar en educaci&#243;n privada en M&#233;xico:</p>
+    <p class="inegi-intro">Cada vez que tu hijo cambia de nivel, la colegiatura da un salto que la mayor&#237;a no tiene en su plan. Estos son los incrementos reales documentados por el INEGI para educaci&#243;n privada en M&#233;xico:</p>
     <div class="inegi-grid">
       <div class="inegi-item">
         <span class="inegi-niveles">Kinder &#8594; Primaria</span>
@@ -581,18 +648,6 @@ input[type=number]::-webkit-inner-spin-button { -webkit-appearance:none; margin:
         <span class="inegi-pct inegi-pct-gold">9% compuesto</span>
       </div>
     </div>
-  </div>
-</div>
-
-<div class="card">
-  <div class="card-title">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-    Cuéntanos sobre tus hijos
-  </div>
-  <div id="children-container"></div>
-  <button class="add-child-btn" onclick="addChild()">+ Agregar otro hijo</button>
-  <button class="calc-btn" onclick="calcular()">Calcular mi Proyecci&#243;n Educativa &#8594;</button>
-</div>
 
 <div id="results">
   <div class="card">
@@ -604,17 +659,24 @@ input[type=number]::-webkit-inner-spin-button { -webkit-appearance:none; margin:
       <div class="result-block danger">
         <label>Gasto Proyectado Total</label>
         <div class="result-value" id="total-cost">---</div>
-        <div class="result-desc">Lo que saldr&#225; de tu bolsillo con inflaci&#243;n del 9% anual e incrementos por nivel escolar.</div>
+        <div class="result-desc">Esto es lo que pagar&#237;as siguiendo el camino tradicional, sin ning&#250;n cambio.</div>
       </div>
       <div class="result-block safe">
         <label>Tu Semilla ARCA100</label>
         <div class="result-value" id="seed-cost">---</div>
-        <div class="result-desc">Una semilla por cada hijo (suma de colegiaturas actuales). El sistema de capitalizaci&#243;n absorbe el resto.</div>
+        <div class="result-desc">El punto de partida para hacer las cosas diferente. Una semilla inicial.</div>
       </div>
     </div>
-    <div class="impact-phrase">
-      <strong>Este es el capital que tendr&#225;s que desembolsar de tu bolsillo bajo el sistema actual.</strong><br>
-      Con ARCA100, activas el sistema con una semilla &#250;nica y dejas que la capitalizaci&#243;n absorba el resto, sin tocar tus finanzas mes a mes.
+    <div class="tension-block">
+      <div class="tension-q">La pregunta no es si puedes pagarlo hoy&#8230;</div>
+      <div class="tension-a">&#191;Puedes sostenerlo durante los pr&#243;ximos 15 o 20 a&#241;os, sin que tu ritmo de vida cambie?</div>
+    </div>
+    <div class="curiosity-block">
+      <div class="curiosity-icon">&#128161;</div>
+      <div>
+        <div class="curiosity-title">Algunas familias ya est&#225;n haciendo esto diferente</div>
+        <div class="curiosity-desc">No eliminan el gasto educativo. Activan un sistema que trabaja en paralelo a su vida. El bot&#243;n de abajo te explica en menos de 7 minutos c&#243;mo se puede lograr.</div>
+      </div>
     </div>
     <div class="chart-title">Comparativa: Sistema Tradicional vs. ARCA100</div>
     <div class="bar-chart">
@@ -653,11 +715,11 @@ input[type=number]::-webkit-inner-spin-button { -webkit-appearance:none; margin:
   </div>
 
   <div class="card" style="text-align:center;">
-    <div class="card-title" style="justify-content:center;margin-bottom:8px;">&#191;Te interesa conocer m&#225;s sobre el sistema?</div>
-    <p style="font-size:13px;color:var(--text2);margin-bottom:20px;line-height:1.6;">Esta proyecci&#243;n es una estimaci&#243;n informativa. Si quieres explorar c&#243;mo funciona el sistema y si aplica para tu situaci&#243;n, con gusto te explicamos sin compromiso.</p>
+    <div class="card-title" style="justify-content:center;margin-bottom:8px;">&#191;C&#243;mo lo est&#225;n resolviendo otras familias?</div>
+    <p style="font-size:13px;color:var(--text2);margin-bottom:20px;line-height:1.6;">Hay una explicaci&#243;n de 7 minutos que muestra el sistema completo. Sin compromisos, sin tecnicismos. Para que tengas la informaci&#243;n y t&#250; mismo decides.</p>
     <button class="cta-btn" onclick="abrirWhatsApp()">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      Quiero conocer m&#225;s sobre el sistema ARCA100
+      Quiero entender c&#243;mo funciona
     </button>
     <div class="cta-sub">Respuesta en menos de 24 horas &middot; Sin compromiso</div>
   </div>
@@ -852,6 +914,33 @@ function mostrarProgresion(hijos) {
 }
 
 function calcular() {
+  // Check for empty fields before processing
+  var cards = document.querySelectorAll('.child-card');
+  var camposFaltantes = false;
+  for (var ci = 0; ci < cards.length; ci++) {
+    var cid = cards[ci].id.replace('child-', '');
+    var edadEl = document.getElementById('edad-' + cid);
+    var colEl  = document.getElementById('col-' + cid);
+    if (!edadEl.value || edadEl.value === '') {
+      edadEl.style.border = '2px solid #d94f4f';
+      edadEl.placeholder = 'Campo requerido';
+      camposFaltantes = true;
+    } else {
+      edadEl.style.border = '';
+    }
+    if (!colEl.value || colEl.value === '') {
+      colEl.style.border = '2px solid #d94f4f';
+      colEl.placeholder = 'Campo requerido';
+      camposFaltantes = true;
+    } else {
+      colEl.style.border = '';
+    }
+  }
+  if (camposFaltantes) {
+    alert('Por favor completa todos los campos marcados en rojo antes de continuar.');
+    return;
+  }
+
   var hijos = getHijos();
   if (hijos.length === 0) {
     alert('Por favor ingresa la edad y colegiatura de al menos un hijo.');
@@ -908,7 +997,7 @@ function calcular() {
         '<span class="bcard-total">' + fmt(fk.costo) + '</span>' +
       '</div>' +
       '<div class="bcard-rows">' +
-        '<div class="bcard-row"><span>Nivel actual</span><span style="color:var(--gold)">' + fk.nivel + '</span></div>' +
+        '<div class="bcard-row"><span>Nivel actual</span><span>' + fk.nivel + '</span></div>' +
         '<div class="bcard-row"><span>A&#241;os restantes</span><span>' + fk.anios + ' a&#241;os</span></div>' +
         '<div class="bcard-row"><span>Colegiatura hoy</span><span>' + fmt(fk.col) + '/mes</span></div>' +
         '<div class="bcard-row"><span>Termina en</span><span>Posgrado</span></div>' +
@@ -917,7 +1006,7 @@ function calcular() {
   }
 
   // Grafica
-  var arcaPct = Math.max((semilla / totalGeneral) * 85 * 100, 0.8);
+  var arcaPct = Math.max((semilla / totalGeneral) * 85, 0.5);
   document.getElementById('bar-trad').style.height = '85%';
   document.getElementById('bar-arca').style.height = arcaPct + '%';
   document.getElementById('lbl-trad').innerHTML = fmt(totalGeneral);
